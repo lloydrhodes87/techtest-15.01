@@ -1,6 +1,5 @@
 import React from 'react';
 import Avatar from 'avataaars';
-
 import avatarMapper from '../../utils/avatarMappers';
 
 const ListItem = (person) => {

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 const PageNumbers = ({ numOfPages, setClickedPage }) => {
   const pages = Array.from(Array(numOfPages).keys());
