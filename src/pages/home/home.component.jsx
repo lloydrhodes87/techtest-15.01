@@ -4,6 +4,8 @@ import ListItem from "../../components/list-item/list-item.component";
 import PageNumbers from "../../components/pages-numbers/page-numbers.component";
 import Search from "../../components/search/search.component";
 
+import "./home.styles.scss";
+
 const Home = () => {
   const [personList, setPersonList] = useState([]);
   const [loaded, setLoaded] = useState(false);
@@ -11,7 +13,6 @@ const Home = () => {
   const [clickedPage, setClickedPage] = useState(1);
 
   useEffect(() => {
-    
     fetchData(clickedPage)
       .then(data => {
         const { count, results } = data;
@@ -25,19 +26,32 @@ const Home = () => {
       });
   }, [clickedPage]);
 
-  const getPersonData = ({results}) => {
-        setPersonList(results);
-        setNumOfPages(null);
-  }
+  const getPersonData = ({ results }) => {
+    setPersonList(results);
+    setNumOfPages(null);
+  };
 
   return (
-    <div>
-      <Search getPersonData={getPersonData}/>
-      {loaded &&
-        personList.map(person => (
-          <ListItem person={person} key={person.name} />
-        ))}
-      <PageNumbers numOfPages={numOfPages} setClickedPage={setClickedPage} />
+    <div className="container">
+      <div className="header-section">
+        <div className="heading">
+          <h1>Star Wars Folk</h1>
+        </div>
+        <div className="search">
+          <Search getPersonData={getPersonData} />
+        </div>
+      </div>
+      <div className="body-section">
+        {loaded &&
+          personList.map(person => (
+            <div className="list-item">
+              <ListItem person={person} key={person.name} />
+            </div>
+          ))}
+      </div>
+      <div className="page-numbers">
+        <PageNumbers numOfPages={numOfPages} setClickedPage={setClickedPage} />
+      </div>
     </div>
   );
 };

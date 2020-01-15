@@ -2,7 +2,6 @@ import React from "react";
 
 const PageNumbers = ({ numOfPages, setClickedPage }) => {
   const pages = Array.from(Array(numOfPages).keys());
-  console.log(numOfPages);
   const handleClick = num => {
     setClickedPage(num);
   };
