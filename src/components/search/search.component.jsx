@@ -1,9 +1,14 @@
 import React from 'react';
 
 const Search = () => {
+    
+
     return (
         <div>
-            Search
+            <label htmlFor='search'>Search</label>
+            <input onChange={handleChange} type='text' value></input>
         </div>
     )
 }
+
+export default Search
