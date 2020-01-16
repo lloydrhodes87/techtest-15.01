@@ -64,16 +64,17 @@ const Home = () => {
               <ListItem person={person} />
             </div>
           ))}
-        {loaded && errorPage && (
-          <div>
-            <ErrorPage err={err} />
-          </div>
-        )}
       </div>
       <div className="page-numbers">
         <PageNumbers numOfPages={numOfPages} setClickedPage={setClickedPage} />
       </div>
+      {loaded && errorPage && (
+          <div>
+            <ErrorPage err={err} />
+          </div>
+        )}
     </div>
+
   );
 };
 
