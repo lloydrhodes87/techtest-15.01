@@ -9,17 +9,17 @@
   }
 
   button {
-      background-color: yellow;
-      font-size: 1.5rem;
-      padding: 4px 8px;
-      margin-left: 1rem;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-      transition: 1s;
+    background-color: yellow;
+    font-size: 1.5rem;
+    padding: 4px 8px;
+    margin-left: 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 1s;
   }
 
   button:hover {
-      transform: scale(1.1);
+    transform: scale(1.1);
   }
 }

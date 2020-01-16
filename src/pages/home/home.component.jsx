@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import fetchData from "../../utils/fetchData";
-import Loader from 'react-loader-spinner'
+import Loader from "react-loader-spinner";
 import ListItem from "../../components/list-item/list-item.component";
 import PageNumbers from "../../components/pages-numbers/page-numbers.component";
 import Search from "../../components/search/search.component";
@@ -43,13 +43,18 @@ const Home = () => {
         </div>
       </div>
       <div className="body-section">
-        {
-          !loaded &&
-          <Loader type="Bars" color="yellow" height={80} width={80} style={{marginTop: '10rem'}}/>
-        }
+        {!loaded && (
+          <Loader
+            type="Bars"
+            color="yellow"
+            height={80}
+            width={80}
+            style={{ marginTop: "10rem" }}
+          />
+        )}
         {loaded &&
           personList.map(person => (
-            <div className="list-item" key={person.name} >
+            <div className="list-item" key={person.name}>
               <ListItem person={person} />
             </div>
           ))}

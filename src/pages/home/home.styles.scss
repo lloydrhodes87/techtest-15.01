@@ -1,29 +1,26 @@
 .heading {
-    margin: 2rem;
-    h1 {
-        color: yellow;
-        font-size: 3rem;
-        
-    }
+  margin: 2rem;
+  h1 {
+    color: yellow;
+    font-size: 3rem;
+  }
 }
 
-
 .body-section {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: center;
-    margin-top: 3rem;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 3rem;
 }
 
 .page-numbers {
-    margin: 3rem 0;
-    div {
-        display: flex;
-        justify-content: center;
-        button {
-            margin: 0 5px;
-        }
+  margin: 3rem 0;
+  div {
+    display: flex;
+    justify-content: center;
+    button {
+      margin: 0 5px;
     }
-    
+  }
 }

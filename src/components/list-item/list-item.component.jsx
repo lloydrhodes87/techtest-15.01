@@ -4,7 +4,6 @@ import avatarMapper from "../../utils/avatarMappers";
 import "./list-item.styles.scss";
 import Modal from "react-modal";
 import FilmsModal from "../films-modal/films-modal.component";
-import { findByLabelText } from "@testing-library/react";
 
 const ListItem = person => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -16,19 +15,17 @@ const ListItem = person => {
       right: "auto",
       bottom: "auto",
       marginRight: "-50%",
-      width: "400px",
-      height: "400px",
+      width: "500px",
+      height: "500px",
       transform: "translate(-50%, -50%)",
       backgroundColor: "black",
       border: "5px solid yellow",
-      display: "flex",
-
+      display: "flex"
     }
   };
 
   Modal.setAppElement("#root");
 
-  const [showFilms, setShowFilms] = useState(false);
   const {
     name,
     hair_color,
@@ -53,7 +50,7 @@ const ListItem = person => {
       <Avatar topType={top} hairColor={hair} skinColor={skin} />
       <div>
         <button onClick={() => setModalOpen(true)}>Show Films</button>
-        <div className='films-modal-container'>
+        <div className="films-modal-container">
           <Modal isOpen={modalOpen} style={customStyles}>
             <FilmsModal films={films} handleCancelModal={handleCancelModal} />
           </Modal>
