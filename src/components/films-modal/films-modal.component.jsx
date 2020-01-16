@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import filmMapper from "../../utils/filmMapper";
 import { FaChevronCircleLeft } from "react-icons/fa";
 import "./films-modal.styles.scss";

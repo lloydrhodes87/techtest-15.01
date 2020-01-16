@@ -6,12 +6,15 @@ import PageNumbers from "../../components/pages-numbers/page-numbers.component";
 import Search from "../../components/search/search.component";
 
 import "./home.styles.scss";
+import ErrorPage from "../../components/errors/error.component";
 
 const Home = () => {
   const [personList, setPersonList] = useState([]);
   const [loaded, setLoaded] = useState(false);
   const [numOfPages, setNumOfPages] = useState(null);
   const [clickedPage, setClickedPage] = useState(1);
+  const [errorPage, setErrorPage] = useState(false);
+  const [err, setErr] = useState(null);
 
   useEffect(() => {
     fetchData(clickedPage)
@@ -20,10 +23,12 @@ const Home = () => {
         setPersonList(results);
         setNumOfPages(Math.ceil(count / 10));
         setLoaded(true);
+        setErrorPage(false);
       })
       .catch(err => {
-        console.log(err);
+        setErrorPage(true);
         setLoaded(false);
+        setErr(err)
       });
   }, [clickedPage]);
 
@@ -43,7 +48,7 @@ const Home = () => {
         </div>
       </div>
       <div className="body-section">
-        {!loaded && (
+        {!loaded && !errorPage && (
           <Loader
             type="Bars"
             color="yellow"
@@ -53,11 +58,17 @@ const Home = () => {
           />
         )}
         {loaded &&
+          !errorPage &&
           personList.map(person => (
             <div className="list-item" key={person.name}>
               <ListItem person={person} />
             </div>
           ))}
+        {loaded && errorPage && (
+          <div>
+            <ErrorPage err={err} />
+          </div>
+        )}
       </div>
       <div className="page-numbers">
         <PageNumbers numOfPages={numOfPages} setClickedPage={setClickedPage} />
