@@ -18,7 +18,7 @@ First cd into the location that you want to store the file and run the following
 
 ```
 git clone https://github.com/lloydrhodes87/techtest-15.01.git
-cd techTest
+cd techtest-15-01
 npm install
 ```
 
