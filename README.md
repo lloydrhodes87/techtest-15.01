@@ -28,7 +28,7 @@ Then open the project in your prefered code editor and run the command
 
 Deployed on
 
-tbc
+https://tech-test-15-01-20.netlify.com/
 
 ### Built with
 
