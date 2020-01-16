@@ -1,6 +1,6 @@
 const axios = require("axios");
 
-const BASE_URL = "https://cors-anywhere.herokuapp.com/https://swapi.co/api";
+const BASE_URL = "https://swapi.co/api";
 
 const fetchPerson = async person => {
   const { data } = await axios
