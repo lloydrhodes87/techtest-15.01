@@ -1,9 +1,33 @@
 import React, { useState } from "react";
 import Avatar from "avataaars";
 import avatarMapper from "../../utils/avatarMappers";
-import filmMapper from "../../utils/filmMapper";
+import "./list-item.styles.scss";
+import Modal from "react-modal";
+import FilmsModal from "../films-modal/films-modal.component";
+import { findByLabelText } from "@testing-library/react";
 
 const ListItem = person => {
+  const [modalOpen, setModalOpen] = useState(false);
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      width: "400px",
+      height: "400px",
+      transform: "translate(-50%, -50%)",
+      backgroundColor: "black",
+      border: "5px solid yellow",
+      display: "flex",
+
+    }
+  };
+
+  Modal.setAppElement("#root");
+
   const [showFilms, setShowFilms] = useState(false);
   const {
     name,
@@ -18,28 +42,22 @@ const ListItem = person => {
   const skin = skinMapper(skin_color);
   const top = hair === "NoHair" ? hair : genderMapper(gender);
 
-  const handleShowFilms = () => {
-    setShowFilms(!showFilms);
+  const handleCancelModal = () => {
+    setModalOpen(false);
   };
 
   return (
-    <div>
+    <div className="list-info">
       <p>Name: {name}</p>
       <p>DOB: {birth_year}</p>
-      <Avatar
-        topType={top}
-        hairColor={hair}
-        skinColor={skin}
-      />
+      <Avatar topType={top} hairColor={hair} skinColor={skin} />
       <div>
-        <button onClick={handleShowFilms}>Show Films</button>
-        {showFilms && (
-          <ul>
-            {films.map(film => {
-              return <li key="film">{filmMapper(film)}</li>;
-            })}
-          </ul>
-        )}
+        <button onClick={() => setModalOpen(true)}>Show Films</button>
+        <div className='films-modal-container'>
+          <Modal isOpen={modalOpen} style={customStyles}>
+            <FilmsModal films={films} handleCancelModal={handleCancelModal} />
+          </Modal>
+        </div>
       </div>
     </div>
   );

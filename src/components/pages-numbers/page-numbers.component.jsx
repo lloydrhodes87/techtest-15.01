@@ -1,4 +1,5 @@
 import React from "react";
+import './page-numbers.styles.scss';
 
 const PageNumbers = ({ numOfPages, setClickedPage }) => {
   const pages = Array.from(Array(numOfPages).keys());
@@ -6,7 +7,7 @@ const PageNumbers = ({ numOfPages, setClickedPage }) => {
     setClickedPage(num);
   };
   return (
-    <div>
+    <div className='page-number-container'>
       {numOfPages &&
         pages.map(page => {
           return (

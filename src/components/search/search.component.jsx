@@ -1,36 +1,31 @@
-import React, { useState } from 'react';
-import fetchPerson from '../../utils/fetchPerson.js';
+import React, { useState } from "react";
+import fetchPerson from "../../utils/fetchPerson.js";
+import "./search.styles.scss";
 
-const Search = ({getPersonData}) => {
+const Search = ({ getPersonData }) => {
+  const [searchTerm, setSearchTerm] = useState("");
 
-    const [searchTerm, setSearchTerm] = useState('');
+  const handleChange = event => {
+    const { value } = event.target;
+    setSearchTerm(value);
+  };
 
-    const handleChange = (event) => {
-        
-        const { value } = event.target;
-        console.log(value)
-        setSearchTerm(value);
-    }
+  const handleClick = () => {
+    fetchPerson(searchTerm)
+      .then(data => {
+        setSearchTerm("");
+        getPersonData(data);
+      })
+      .catch(err => console.log(err));
+  };
 
-    const handleClick = () => {
-        console.log(searchTerm)
-        fetchPerson(searchTerm)
-            .then((data) => {
-                console.log('data', data)
-                setSearchTerm('');
-                getPersonData(data)
-            })
-            .catch(err => console.log(err))
-    }
+  return (
+    <div className="search-container">
+      <input onChange={handleChange} type="text" value={searchTerm}></input>
 
-    return (
-        <div>
-            <label htmlFor='search'>Search</label>
-            <input onChange={handleChange} type='text' value={searchTerm}></input>
+      <button onClick={handleClick}>Search</button>
+    </div>
+  );
+};
 
-            <button onClick={handleClick}>Search</button>
-        </div>
-    )
-}
-
-export default Search
+export default Search;

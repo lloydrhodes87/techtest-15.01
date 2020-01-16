@@ -1,0 +1,36 @@
+.films-modal {
+    width: 100%;
+    text-align: center;
+    margin: auto;
+
+    height: 100%;
+    
+
+    button {
+        color: yellow;
+        background: black;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        transition: 1s;
+        transform: translateX(11rem);
+        right: 50px;
+     
+    }
+
+    button:hover {
+        transform: translateX(11rem) scale(1.2)
+    }
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column-reverse;
+
+        li {
+            color: yellow;
+            
+        }
+        
+    }
+}
